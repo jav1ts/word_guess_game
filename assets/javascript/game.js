@@ -1,12 +1,13 @@
 $(document).ready(function () {
 
     let userGuess = "";
-    let count = 0;
+    let wrongGuess = 0;
     let correctGuess = 0;
 
     var movies = ["Terminator", "Titanic", "Lion King", "Rush Hour", "John Wick", "Kill Bill", "Frozen"];
     var movieAnswer = movies[Math.floor(Math.random() * movies.length)].toUpperCase().split('');
     let myBoxes = $('.mystart');
+    let wrongKey = $('.badguess');
 
     //board setup
     for (let i = 0; i < movieAnswer.length; i++) {
@@ -25,10 +26,10 @@ $(document).ready(function () {
                 }
             }
         } else {
-            count += 1;
-            console.log(count,"this is the count");
-            if (count >= 4){
-                alert("GAME OVER!! YOU NEED TO WATCH MORE MOVIES");
+            wrongGuess += 1;
+            alert("There is no letter "+userGuess+". You have "+(5-wrongGuess)+" guesses left.");
+            if (wrongGuess >= 5){
+                alert("GAME OVER! You need to watch more movies!");
             }
         }
     }
