@@ -5,7 +5,8 @@ $(document).ready(function () {
     let correctGuess = 0;
     let counter = 0;
     let trashBin = [];
-    let alphabet = "abcdefghijklmnopqrstuvwxyz1234567890".toUpperCase().split("");
+    let alphabet = "_abcdefghijklmnopqrstuvwxyz1234567890".toUpperCase().split("");
+
 
 
 
@@ -15,6 +16,7 @@ $(document).ready(function () {
     let wrongKey = $('.badguess');
 
     
+
     if (movieAnswer.join("") === "TERMINATOR 2") {
         alert("Hasta la vista baby");
     }
@@ -73,11 +75,10 @@ $(document).ready(function () {
         } else {
             if (abcArray.indexOf(letter)) {
 
-                if (trashBin.indexOf(letter) <= -1) {
+                if (trashBin.indexOf(letter) < 0) {
                     wrongKey[counter].innerText = letter;
                     counter++;
                     trashBin.push(letter);
-
                 }
             }
             // wrongGuess += 1;
@@ -93,7 +94,7 @@ $(document).ready(function () {
         if (alphabet.indexOf(event.key.toUpperCase()) >= 0) {
             userGuess = event.key.toUpperCase();
         }
-        
+
         answerChecker(userGuess, movieAnswer, alphabet);
     });
 });
